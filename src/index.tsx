@@ -1,15 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import * as Config from "./common/environment/config";
+import App from "./containers/lifecycle/App";
 
 ReactDOM.render(
-  <div>
-    <div>
-      someKey: {Config.env.someKey}
-    </div>
-    <div>
-      commonKey: {Config.commonValue}
-    </div>
-  </div>,
+  <App />,
   document.getElementById("container"),
 );

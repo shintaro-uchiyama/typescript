@@ -13,13 +13,16 @@ interface State {
 class Lifecyle extends React.Component<Props, State> {
 
   public static getDerivedStateFromProps(props: Props, state: State) {
+    // tslint:disable-next-line:no-console
     console.log("getDerivedStateFromProps called");
     if (props.id === "target") {
+      // tslint:disable-next-line:no-console
       console.log("state is changed");
       return {
         status: "state changed",
       };
     }
+    // tslint:disable-next-line:no-console
     console.log("state is not changed");
     return null;
   }
@@ -31,19 +34,23 @@ class Lifecyle extends React.Component<Props, State> {
   }
   constructor(props: Props) {
     super(props);
+    // tslint:disable-next-line:no-console
     console.log("constructor called");
     this.state = {
-      status: "",
       hasError: false,
+      status: "",
     };
   }
 
   public shouldComponentUpdate(nextProps: Props, nextState: State) {
+    // tslint:disable-next-line:no-console
     console.log("shouldComponentUpdate called");
     if (this.props.id !== nextProps.id) {
+      // tslint:disable-next-line:no-console
       console.log("current prop id !== next prop id let's update component!");
       return true;
     }
+    // tslint:disable-next-line:no-console
     console.log("current prop id === next prop id don't update component!");
     return false;
   }
@@ -71,15 +78,19 @@ class Lifecyle extends React.Component<Props, State> {
    * ここでsetStateすべきではない。2回renderして遅くなる
    */
   public componentDidMount() {
+    // tslint:disable-next-line:no-console
     console.log("componentDidMount called");
   }
 
   public getSnapshotBeforeUpdate(prevProps: Props, prevState: State) {
+    // tslint:disable-next-line:no-console
     console.log("getSnapshotBeforeUpdate called");
     if (prevProps.id === "target") {
+      // tslint:disable-next-line:no-console
       console.log("prevProps.id === target carry snapshot to update component!");
       return true;
     }
+    // tslint:disable-next-line:no-console
     console.log("prevProps.id !== target don't carry snapshot to update component!");
     return null;
   }
@@ -91,10 +102,13 @@ class Lifecyle extends React.Component<Props, State> {
    * getSnapshotBeforeUpdate()がある場合snapshot引数が有効
    */
   public componentDidUpdate(prevProps: Props, prevState: State, snapshot: boolean) {
+    // tslint:disable-next-line:no-console
     console.log("componentDidUpdate called");
     if (this.props.id !== prevProps.id) {
+      // tslint:disable-next-line:no-console
       console.log("prev prop id !== curren prop id do something after update component");
     } else if (snapshot) {
+      // tslint:disable-next-line:no-console
       console.log("true snapshot is carried");
     }
   }
@@ -105,10 +119,12 @@ class Lifecyle extends React.Component<Props, State> {
    * もうコンポーネントもいなくなるのでsetStateここで呼ばないで
    */
   public componentWillUnmount() {
+    // tslint:disable-next-line:no-console
     console.log("componentWillUnmount called");
   }
 
   public componentDidCatch(error: any, info: any) {
+    // tslint:disable-next-line:no-console
     console.log("componentDidCatch called");
   }
 }

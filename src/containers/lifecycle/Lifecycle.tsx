@@ -10,17 +10,9 @@ interface State {
   hasError: boolean;
 }
 
-class Lifecyle extends React.Component<Props, State>{
-  constructor(props: Props) {
-    super(props);
-    console.log("constructor called");
-    this.state = {
-      status: "",
-      hasError: false
-    }
-  }
+class Lifecyle extends React.Component<Props, State> {
 
-  static getDerivedStateFromProps(props: Props, state: State) {
+  public static getDerivedStateFromProps(props: Props, state: State) {
     console.log("getDerivedStateFromProps called");
     if (props.id === "target") {
       console.log("state is changed");
@@ -30,6 +22,20 @@ class Lifecyle extends React.Component<Props, State>{
     }
     console.log("state is not changed");
     return null;
+  }
+
+  public static getDerivedStateFromError(error: Error) {
+    return {
+      hasError: true,
+    };
+  }
+  constructor(props: Props) {
+    super(props);
+    console.log("constructor called");
+    this.state = {
+      status: "",
+      hasError: false,
+    };
   }
 
   public shouldComponentUpdate(nextProps: Props, nextState: State) {
@@ -42,15 +48,9 @@ class Lifecyle extends React.Component<Props, State>{
     return false;
   }
 
-  static getDerivedStateFromError(error: Error) {
-    return {
-      hasError: true,
-    }
-  }
-
   public render() {
     const { id, handleInput } = this.props;
-    const {status} = this.state;
+    const { status } = this.state;
     if (this.state.hasError) {
       return (
         <div>error happened</div>

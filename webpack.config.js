@@ -19,6 +19,19 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'awesome-typescript-loader',
       },
+      {
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'tslint-loader',
+            options: {
+              typeCheck: true,
+              fix: true,
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [

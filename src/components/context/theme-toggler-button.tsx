@@ -1,7 +1,7 @@
 import React from "react";
-import { ThemeContext } from "../../containers/context/theme-context";
+import ThemeContext from "../../containers/context/theme-context";
 
-function ThemeTogglerButton() {
+const ThemeTogglerButton = () => {
   // The Theme Toggler Button receives not only the theme
   // but also a toggleTheme function from the context
   return (
@@ -15,6 +15,6 @@ function ThemeTogglerButton() {
       )}
     </ThemeContext.Consumer>
   );
-}
+};
 
 export default ThemeTogglerButton;

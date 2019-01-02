@@ -1,6 +1,7 @@
 import React from "react";
 import { Content } from "../../components/context/Context";
-import { ThemeContext, themes } from "./theme-context";
+import ThemeContext from "./theme-context";
+import { themes } from "./themes";
 
 interface State {
   theme: {

@@ -27,7 +27,7 @@ module.exports = {
             loader: 'tslint-loader',
             options: {
               typeCheck: true,
-              fix: true,
+              fix: false,
             }
           }
         ]

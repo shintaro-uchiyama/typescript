@@ -16,21 +16,14 @@ module.exports = {
     // ファイルタイプに対するloaderの設定
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'awesome-typescript-loader',
+        enforce: "pre",
+        test: /\.(js|ts|jsx|tsx)$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
       },
       {
-        enforce: 'pre',
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'tslint-loader',
-            options: {
-              typeCheck: true,
-              fix: false,
-            }
-          }
-        ]
+        use: "ts-loader",
       }
     ]
   },
